@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: PermisDrive
+    security:
+      jwt:
+        secret-key: 404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+        expiration: 86400000  # a day
+        refresh-token:
+          expiration: 604800000 # 7 days
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:6222/PermisDrive-db
+#    url: jdbc:postgresql://PermisDrive-db:6222/PermisDrive-db
+    username: postgres
+    password: pg8891
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    open-in-view: false
+server:
+  port: 8080
+debug: true
+
+
+#2-log4j properties
+#override message format in concole
+#logging:
+#  pattern:
+#    console: "%d{dd-MM-yyyy HH:mm:ss.SSS} %magenta([%thread]) %highlight(%-5level) %logger.%M - %msg%n"
+#    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %class{36}.%M %L - %msg%nl"
+#  #file properties
+#  level:
+#    root: info
+#    hibernate: info
+
+
+

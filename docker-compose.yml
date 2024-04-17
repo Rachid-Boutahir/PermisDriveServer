@@ -1,0 +1,37 @@
+version: '3.1'
+
+services:
+
+  PermisDrive-db:
+    container_name: PermisDrive-db
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: pg8891
+      POSTGRES_DB: PermisDrive-db
+      PGDATA: /data/postgres
+    volumes:
+      - PermisDrive-db:/data/postgres
+    ports:
+      - "6222:5432"
+    networks:
+      - bridgedrive
+    restart: unless-stopped
+
+  permisdrive:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - '9098:9098'
+    depends_on:
+      - PermisDrive-db
+    networks:
+      - bridgedrive
+
+networks:
+  bridgedrive:
+    driver: bridge
+
+volumes:
+  PermisDrive-db:
