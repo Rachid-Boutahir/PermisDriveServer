@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'todo'
+                git branch: 'main', url: 'https://github.com/Rachid-Boutahir/PermisDriveServer'
             }
         }
 
